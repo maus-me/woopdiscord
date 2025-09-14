@@ -1,0 +1,10 @@
+{
+  "type": "code",
+  "modid": "woopdiscord",
+  "name": "woopdiscord",
+  "side": "client",
+  "authors": [ "Mausterio", "Muddxyii" ],
+  "description": "Adds Discord Rich Presence support to Vintage Story",
+  "version": "1.0.0",
+  "dependencies": { "game": "1.21.0" }
+}
