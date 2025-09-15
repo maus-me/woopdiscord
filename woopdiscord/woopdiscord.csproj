@@ -51,6 +51,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="DiscordRichPresence" Version="1.6.1.70" />
         <PackageReference Include="JetBrains.Annotations" Version="2024.3.0"
                           PrivateAssets="all"
                           IncludeAssets="compile"/>
@@ -67,5 +68,17 @@
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
     </ItemGroup>
+
+    <!-- Ensure DiscordRPC.dll is in the mod root (next to woopdiscord.dll) for Debug/Release runs -->
+    <ItemGroup>
+        <ManagedDep Include="libraries\DiscordRPC.dll" />
+    </ItemGroup>
+
+    <Target Name="CopyManagedDepsToModRoot" AfterTargets="Build">
+        <Message Text="Copying managed deps to mod root..." Importance="low" />
+        <Copy SourceFiles="@(ManagedDep)"
+              DestinationFiles="$(OutputPath)\DiscordRPC.dll"
+              SkipUnchangedFiles="true" />
+    </Target>
 
 </Project>
